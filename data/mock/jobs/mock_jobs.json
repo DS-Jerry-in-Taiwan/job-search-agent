@@ -1,0 +1,1252 @@
+[
+  {
+    "id": "job_001",
+    "title": "Senior AI Engineer 1",
+    "company": "TechCorp 1",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "Python",
+      "PyTorch",
+      "Kubernetes",
+      "TensorFlow",
+      "Docker",
+      "Vector DB",
+      "LangChain",
+      "OpenAI API",
+      "RAG",
+      "LlamaIndex"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.5,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_002",
+    "title": "Senior AI Engineer 2",
+    "company": "TechCorp 2",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "Kubernetes",
+      "Docker",
+      "TensorFlow",
+      "SQL",
+      "Python",
+      "LangChain",
+      "RAG",
+      "Prompt Engineering",
+      "OpenAI API",
+      "Vector DB"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.5,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_003",
+    "title": "Senior AI Engineer 3",
+    "company": "TechCorp 3",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "SQL",
+      "Docker",
+      "Python",
+      "ElasticSearch",
+      "RAG",
+      "LangChain",
+      "Vector DB",
+      "Prompt Engineering",
+      "OpenAI API",
+      "LlamaIndex"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.3,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_004",
+    "title": "Senior AI Engineer 4",
+    "company": "TechCorp 4",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "PyTorch",
+      "Python",
+      "TensorFlow",
+      "Docker",
+      "Vector DB",
+      "LangChain",
+      "Prompt Engineering",
+      "RAG",
+      "OpenAI API",
+      "LlamaIndex"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.4,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_005",
+    "title": "Senior AI Engineer 5",
+    "company": "TechCorp 5",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "TensorFlow",
+      "Docker",
+      "SQL",
+      "Kubernetes",
+      "PyTorch",
+      "LangChain",
+      "Vector DB",
+      "ElasticSearch",
+      "RAG",
+      "Prompt Engineering"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.5,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_006",
+    "title": "Senior AI Engineer 6",
+    "company": "TechCorp 6",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "Python",
+      "TensorFlow",
+      "PyTorch",
+      "Vector DB",
+      "LangChain",
+      "Prompt Engineering",
+      "ElasticSearch",
+      "RAG",
+      "LlamaIndex",
+      "OpenAI API"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.3,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_007",
+    "title": "Senior AI Engineer 7",
+    "company": "TechCorp 7",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "Kubernetes",
+      "Python",
+      "TensorFlow",
+      "PyTorch",
+      "Docker",
+      "SQL",
+      "Vector DB",
+      "ElasticSearch",
+      "RAG",
+      "LlamaIndex"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.6,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_008",
+    "title": "Senior AI Engineer 8",
+    "company": "TechCorp 8",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "Python",
+      "Kubernetes",
+      "SQL",
+      "TensorFlow",
+      "PyTorch",
+      "Docker",
+      "Vector DB",
+      "LangChain",
+      "ElasticSearch",
+      "OpenAI API"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.6,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_009",
+    "title": "Senior AI Engineer 9",
+    "company": "TechCorp 9",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "Docker",
+      "Kubernetes",
+      "SQL",
+      "TensorFlow",
+      "PyTorch",
+      "Python",
+      "OpenAI API",
+      "LangChain",
+      "Prompt Engineering",
+      "LlamaIndex"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.6,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_010",
+    "title": "Senior AI Engineer 10",
+    "company": "TechCorp 10",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "Docker",
+      "TensorFlow",
+      "PyTorch",
+      "Python",
+      "ElasticSearch",
+      "RAG",
+      "Prompt Engineering",
+      "LlamaIndex",
+      "OpenAI API",
+      "Vector DB"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.4,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_011",
+    "title": "Senior AI Engineer 11",
+    "company": "TechCorp 11",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "Python",
+      "PyTorch",
+      "TensorFlow",
+      "Kubernetes",
+      "SQL",
+      "Vector DB",
+      "ElasticSearch",
+      "LangChain",
+      "OpenAI API",
+      "Prompt Engineering"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.5,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_012",
+    "title": "Senior AI Engineer 12",
+    "company": "TechCorp 12",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "Kubernetes",
+      "Docker",
+      "TensorFlow",
+      "PyTorch",
+      "SQL",
+      "Vector DB",
+      "LangChain",
+      "ElasticSearch",
+      "OpenAI API",
+      "Prompt Engineering"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.5,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_013",
+    "title": "Senior AI Engineer 13",
+    "company": "TechCorp 13",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "SQL",
+      "PyTorch",
+      "TensorFlow",
+      "Docker",
+      "Python",
+      "Kubernetes",
+      "Vector DB",
+      "Prompt Engineering",
+      "RAG",
+      "LangChain"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.6,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_014",
+    "title": "Senior AI Engineer 14",
+    "company": "TechCorp 14",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "Docker",
+      "SQL",
+      "PyTorch",
+      "Python",
+      "Kubernetes",
+      "TensorFlow",
+      "LangChain",
+      "LlamaIndex",
+      "OpenAI API",
+      "Prompt Engineering"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.6,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_015",
+    "title": "Senior AI Engineer 15",
+    "company": "TechCorp 15",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "PyTorch",
+      "Docker",
+      "TensorFlow",
+      "Python",
+      "SQL",
+      "ElasticSearch",
+      "RAG",
+      "Vector DB",
+      "Prompt Engineering",
+      "LlamaIndex"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.5,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_016",
+    "title": "Senior AI Engineer 16",
+    "company": "TechCorp 16",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "TensorFlow",
+      "Docker",
+      "SQL",
+      "Vector DB",
+      "RAG",
+      "OpenAI API",
+      "ElasticSearch",
+      "LangChain",
+      "LlamaIndex",
+      "Prompt Engineering"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.3,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_017",
+    "title": "Senior AI Engineer 17",
+    "company": "TechCorp 17",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "Kubernetes",
+      "Python",
+      "Docker",
+      "SQL",
+      "TensorFlow",
+      "OpenAI API",
+      "Prompt Engineering",
+      "LangChain",
+      "LlamaIndex",
+      "ElasticSearch"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.5,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_018",
+    "title": "Senior AI Engineer 18",
+    "company": "TechCorp 18",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "Kubernetes",
+      "TensorFlow",
+      "SQL",
+      "Docker",
+      "Python",
+      "PyTorch",
+      "RAG",
+      "LlamaIndex",
+      "Vector DB",
+      "ElasticSearch"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.6,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_019",
+    "title": "Senior AI Engineer 19",
+    "company": "TechCorp 19",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "Docker",
+      "SQL",
+      "Python",
+      "Kubernetes",
+      "TensorFlow",
+      "PyTorch",
+      "LangChain",
+      "RAG",
+      "OpenAI API",
+      "Prompt Engineering"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.6,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_020",
+    "title": "Senior AI Engineer 20",
+    "company": "TechCorp 20",
+    "description": "負責開發 AI 相關產品與技術",
+    "requirements": [
+      "TensorFlow",
+      "Python",
+      "Docker",
+      "Kubernetes",
+      "SQL",
+      "PyTorch",
+      "Vector DB",
+      "LangChain",
+      "ElasticSearch",
+      "Prompt Engineering"
+    ],
+    "location": "台北市/新竹/遠端",
+    "salary_range": "120-200萬/年",
+    "employment_type": "全職",
+    "match_score": 0.6,
+    "match_reasons": [
+      "技能高度重疊"
+    ]
+  },
+  {
+    "id": "job_021",
+    "title": "AI Engineer 21",
+    "company": "StartupCo 21",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "SQL",
+      "Kubernetes",
+      "PyTorch",
+      "LlamaIndex",
+      "ElasticSearch",
+      "Prompt Engineering",
+      "Vector DB",
+      "RAG",
+      "LangChain",
+      "OpenAI API"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.3,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_022",
+    "title": "AI Engineer 22",
+    "company": "StartupCo 22",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "Python",
+      "PyTorch",
+      "Kubernetes",
+      "Vector DB",
+      "Prompt Engineering",
+      "LangChain",
+      "LlamaIndex",
+      "RAG",
+      "ElasticSearch",
+      "OpenAI API"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.3,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_023",
+    "title": "AI Engineer 23",
+    "company": "StartupCo 23",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "TensorFlow",
+      "Docker",
+      "PyTorch",
+      "LlamaIndex",
+      "RAG",
+      "ElasticSearch",
+      "Prompt Engineering",
+      "OpenAI API",
+      "LangChain",
+      "Vector DB"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.3,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_024",
+    "title": "AI Engineer 24",
+    "company": "StartupCo 24",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "Kubernetes",
+      "TensorFlow",
+      "PyTorch",
+      "Docker",
+      "OpenAI API",
+      "RAG",
+      "LangChain",
+      "LlamaIndex",
+      "ElasticSearch",
+      "Prompt Engineering"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.4,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_025",
+    "title": "AI Engineer 25",
+    "company": "StartupCo 25",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "Kubernetes",
+      "Python",
+      "SQL",
+      "TensorFlow",
+      "ElasticSearch",
+      "LangChain",
+      "LlamaIndex",
+      "RAG",
+      "OpenAI API",
+      "Prompt Engineering"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.4,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_026",
+    "title": "AI Engineer 26",
+    "company": "StartupCo 26",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "Docker",
+      "TensorFlow",
+      "Kubernetes",
+      "LangChain",
+      "Prompt Engineering",
+      "ElasticSearch",
+      "LlamaIndex",
+      "RAG",
+      "Vector DB",
+      "OpenAI API"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.3,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_027",
+    "title": "AI Engineer 27",
+    "company": "StartupCo 27",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "SQL",
+      "Python",
+      "Docker",
+      "Kubernetes",
+      "Vector DB",
+      "LangChain",
+      "Prompt Engineering",
+      "RAG",
+      "ElasticSearch",
+      "LlamaIndex"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.4,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_028",
+    "title": "AI Engineer 28",
+    "company": "StartupCo 28",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "Docker",
+      "Kubernetes",
+      "TensorFlow",
+      "Vector DB",
+      "LlamaIndex",
+      "LangChain",
+      "RAG",
+      "Prompt Engineering",
+      "ElasticSearch",
+      "OpenAI API"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.3,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_029",
+    "title": "AI Engineer 29",
+    "company": "StartupCo 29",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "PyTorch",
+      "SQL",
+      "Docker",
+      "Python",
+      "ElasticSearch",
+      "RAG",
+      "Prompt Engineering",
+      "Vector DB",
+      "LangChain",
+      "LlamaIndex"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.4,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_030",
+    "title": "AI Engineer 30",
+    "company": "StartupCo 30",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "Kubernetes",
+      "Docker",
+      "SQL",
+      "TensorFlow",
+      "OpenAI API",
+      "LlamaIndex",
+      "Vector DB",
+      "ElasticSearch",
+      "LangChain",
+      "RAG"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.4,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_031",
+    "title": "AI Engineer 31",
+    "company": "StartupCo 31",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "Python",
+      "SQL",
+      "Docker",
+      "ElasticSearch",
+      "OpenAI API",
+      "LlamaIndex",
+      "RAG",
+      "LangChain",
+      "Vector DB",
+      "Prompt Engineering"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.3,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_032",
+    "title": "AI Engineer 32",
+    "company": "StartupCo 32",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "Python",
+      "Kubernetes",
+      "TensorFlow",
+      "ElasticSearch",
+      "Prompt Engineering",
+      "RAG",
+      "LangChain",
+      "OpenAI API",
+      "Vector DB",
+      "LlamaIndex"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.3,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_033",
+    "title": "AI Engineer 33",
+    "company": "StartupCo 33",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "TensorFlow",
+      "SQL",
+      "Kubernetes",
+      "Prompt Engineering",
+      "LlamaIndex",
+      "LangChain",
+      "OpenAI API",
+      "RAG",
+      "Vector DB",
+      "ElasticSearch"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.3,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_034",
+    "title": "AI Engineer 34",
+    "company": "StartupCo 34",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "PyTorch",
+      "Kubernetes",
+      "TensorFlow",
+      "Docker",
+      "ElasticSearch",
+      "RAG",
+      "OpenAI API",
+      "LlamaIndex",
+      "Vector DB",
+      "LangChain"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.4,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_035",
+    "title": "AI Engineer 35",
+    "company": "StartupCo 35",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "SQL",
+      "TensorFlow",
+      "Kubernetes",
+      "LangChain",
+      "Prompt Engineering",
+      "ElasticSearch",
+      "LlamaIndex",
+      "OpenAI API",
+      "Vector DB",
+      "RAG"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.3,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_036",
+    "title": "AI Engineer 36",
+    "company": "StartupCo 36",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "Kubernetes",
+      "PyTorch",
+      "Python",
+      "LangChain",
+      "ElasticSearch",
+      "OpenAI API",
+      "Vector DB",
+      "RAG",
+      "LlamaIndex",
+      "Prompt Engineering"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.3,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_037",
+    "title": "AI Engineer 37",
+    "company": "StartupCo 37",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "Kubernetes",
+      "SQL",
+      "TensorFlow",
+      "Prompt Engineering",
+      "ElasticSearch",
+      "LangChain",
+      "Vector DB",
+      "OpenAI API",
+      "RAG",
+      "LlamaIndex"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.3,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_038",
+    "title": "AI Engineer 38",
+    "company": "StartupCo 38",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "Kubernetes",
+      "SQL",
+      "PyTorch",
+      "OpenAI API",
+      "ElasticSearch",
+      "Vector DB",
+      "LangChain",
+      "LlamaIndex",
+      "Prompt Engineering",
+      "RAG"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.3,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_039",
+    "title": "AI Engineer 39",
+    "company": "StartupCo 39",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "Python",
+      "Kubernetes",
+      "Docker",
+      "ElasticSearch",
+      "Vector DB",
+      "Prompt Engineering",
+      "OpenAI API",
+      "LlamaIndex",
+      "LangChain",
+      "RAG"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.3,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_040",
+    "title": "AI Engineer 40",
+    "company": "StartupCo 40",
+    "description": "參與 AI 專案開發",
+    "requirements": [
+      "Kubernetes",
+      "TensorFlow",
+      "Docker",
+      "PyTorch",
+      "Vector DB",
+      "LlamaIndex",
+      "OpenAI API",
+      "RAG",
+      "Prompt Engineering",
+      "LangChain"
+    ],
+    "location": "台北市/台中/遠端",
+    "salary_range": "90-150萬/年",
+    "employment_type": "全職",
+    "match_score": 0.4,
+    "match_reasons": [
+      "部分技能重疊"
+    ]
+  },
+  {
+    "id": "job_041",
+    "title": "Junior AI Developer 41",
+    "company": "Company 41",
+    "description": "協助開發 AI 功能",
+    "requirements": [
+      "Kubernetes",
+      "Docker",
+      "PyTorch",
+      "SQL",
+      "TensorFlow",
+      "Python",
+      "Prompt Engineering",
+      "LangChain",
+      "OpenAI API",
+      "Vector DB"
+    ],
+    "location": "台北市/遠端",
+    "salary_range": "60-100萬/年",
+    "employment_type": "全職",
+    "match_score": 0.6,
+    "match_reasons": [
+      "技能重疊較低"
+    ]
+  },
+  {
+    "id": "job_042",
+    "title": "Junior AI Developer 42",
+    "company": "Company 42",
+    "description": "協助開發 AI 功能",
+    "requirements": [
+      "Kubernetes",
+      "SQL",
+      "TensorFlow",
+      "Docker",
+      "Python",
+      "PyTorch",
+      "LlamaIndex",
+      "LangChain",
+      "Vector DB",
+      "ElasticSearch"
+    ],
+    "location": "台北市/遠端",
+    "salary_range": "60-100萬/年",
+    "employment_type": "全職",
+    "match_score": 0.6,
+    "match_reasons": [
+      "技能重疊較低"
+    ]
+  },
+  {
+    "id": "job_043",
+    "title": "Junior AI Developer 43",
+    "company": "Company 43",
+    "description": "協助開發 AI 功能",
+    "requirements": [
+      "Python",
+      "SQL",
+      "Docker",
+      "PyTorch",
+      "Kubernetes",
+      "TensorFlow",
+      "ElasticSearch",
+      "LangChain",
+      "RAG",
+      "LlamaIndex"
+    ],
+    "location": "台北市/遠端",
+    "salary_range": "60-100萬/年",
+    "employment_type": "全職",
+    "match_score": 0.6,
+    "match_reasons": [
+      "技能重疊較低"
+    ]
+  },
+  {
+    "id": "job_044",
+    "title": "Junior AI Developer 44",
+    "company": "Company 44",
+    "description": "協助開發 AI 功能",
+    "requirements": [
+      "Python",
+      "Docker",
+      "PyTorch",
+      "Kubernetes",
+      "SQL",
+      "TensorFlow",
+      "LlamaIndex",
+      "OpenAI API",
+      "Vector DB",
+      "LangChain"
+    ],
+    "location": "台北市/遠端",
+    "salary_range": "60-100萬/年",
+    "employment_type": "全職",
+    "match_score": 0.6,
+    "match_reasons": [
+      "技能重疊較低"
+    ]
+  },
+  {
+    "id": "job_045",
+    "title": "Junior AI Developer 45",
+    "company": "Company 45",
+    "description": "協助開發 AI 功能",
+    "requirements": [
+      "Docker",
+      "PyTorch",
+      "Kubernetes",
+      "SQL",
+      "TensorFlow",
+      "Python",
+      "LlamaIndex",
+      "OpenAI API",
+      "LangChain",
+      "ElasticSearch"
+    ],
+    "location": "台北市/遠端",
+    "salary_range": "60-100萬/年",
+    "employment_type": "全職",
+    "match_score": 0.6,
+    "match_reasons": [
+      "技能重疊較低"
+    ]
+  },
+  {
+    "id": "job_046",
+    "title": "Junior AI Developer 46",
+    "company": "Company 46",
+    "description": "協助開發 AI 功能",
+    "requirements": [
+      "Docker",
+      "PyTorch",
+      "Python",
+      "Kubernetes",
+      "SQL",
+      "TensorFlow",
+      "LangChain",
+      "LlamaIndex",
+      "OpenAI API",
+      "RAG"
+    ],
+    "location": "台北市/遠端",
+    "salary_range": "60-100萬/年",
+    "employment_type": "全職",
+    "match_score": 0.6,
+    "match_reasons": [
+      "技能重疊較低"
+    ]
+  },
+  {
+    "id": "job_047",
+    "title": "Junior AI Developer 47",
+    "company": "Company 47",
+    "description": "協助開發 AI 功能",
+    "requirements": [
+      "PyTorch",
+      "Python",
+      "TensorFlow",
+      "Kubernetes",
+      "Docker",
+      "SQL",
+      "Prompt Engineering",
+      "OpenAI API",
+      "LlamaIndex",
+      "ElasticSearch"
+    ],
+    "location": "台北市/遠端",
+    "salary_range": "60-100萬/年",
+    "employment_type": "全職",
+    "match_score": 0.6,
+    "match_reasons": [
+      "技能重疊較低"
+    ]
+  },
+  {
+    "id": "job_048",
+    "title": "Junior AI Developer 48",
+    "company": "Company 48",
+    "description": "協助開發 AI 功能",
+    "requirements": [
+      "TensorFlow",
+      "Docker",
+      "Python",
+      "PyTorch",
+      "SQL",
+      "Kubernetes",
+      "LlamaIndex",
+      "ElasticSearch",
+      "LangChain",
+      "OpenAI API"
+    ],
+    "location": "台北市/遠端",
+    "salary_range": "60-100萬/年",
+    "employment_type": "全職",
+    "match_score": 0.6,
+    "match_reasons": [
+      "技能重疊較低"
+    ]
+  },
+  {
+    "id": "job_049",
+    "title": "Junior AI Developer 49",
+    "company": "Company 49",
+    "description": "協助開發 AI 功能",
+    "requirements": [
+      "TensorFlow",
+      "Docker",
+      "Kubernetes",
+      "SQL",
+      "PyTorch",
+      "Python",
+      "ElasticSearch",
+      "LlamaIndex",
+      "OpenAI API",
+      "RAG"
+    ],
+    "location": "台北市/遠端",
+    "salary_range": "60-100萬/年",
+    "employment_type": "全職",
+    "match_score": 0.6,
+    "match_reasons": [
+      "技能重疊較低"
+    ]
+  },
+  {
+    "id": "job_050",
+    "title": "Junior AI Developer 50",
+    "company": "Company 50",
+    "description": "協助開發 AI 功能",
+    "requirements": [
+      "Python",
+      "Docker",
+      "SQL",
+      "TensorFlow",
+      "Kubernetes",
+      "PyTorch",
+      "ElasticSearch",
+      "LlamaIndex",
+      "Prompt Engineering",
+      "RAG"
+    ],
+    "location": "台北市/遠端",
+    "salary_range": "60-100萬/年",
+    "employment_type": "全職",
+    "match_score": 0.6,
+    "match_reasons": [
+      "技能重疊較低"
+    ]
+  }
+]

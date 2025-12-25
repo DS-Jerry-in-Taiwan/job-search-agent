@@ -1,0 +1,5 @@
+# 全局流程控制參數
+conversation:
+  max_turn_count: 3
+workflow:
+  end_status: "__end__"

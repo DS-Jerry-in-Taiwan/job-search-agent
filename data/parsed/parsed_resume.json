@@ -1,0 +1,29 @@
+{
+  "name": "李岳駿 (Jerry Lee)",
+  "total_experience_years": 5.5,
+  "skills": {
+    "programming": [
+      "Python",
+      "SQL"
+    ],
+    "ml_frameworks": [
+      "PyTorch",
+      "TensorFlow"
+    ],
+    "cloud_devops": [
+      "Docker",
+      "Kubernetes"
+    ]
+  },
+  "work_history": [
+    {
+      "company": "昇銳智慧科技",
+      "role": "AI工程師",
+      "duration": "2024/10-至今",
+      "key_tech": [
+        "YOLO",
+        "OpenCV"
+      ]
+    }
+  ]
+}

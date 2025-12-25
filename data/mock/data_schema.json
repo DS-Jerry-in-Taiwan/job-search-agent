@@ -1,0 +1,24 @@
+{
+  "job_schema": {
+    "id": "string",
+    "title": "string",
+    "company": "string",
+    "description": "string",
+    "requirements": ["string"],
+    "location": "string",
+    "salary_range": "string",
+    "employment_type": "string",
+    "match_score": "float (0-1)",
+    "match_reasons": ["string"]
+  },
+  "provider_interface": {
+    "BaseProvider": "abstract base class",
+    "MockProvider": "concrete implementation",
+    "CrawlerProvider": "reserved for future"
+  },
+  "match_score_distribution": {
+    "high": ">=0.7 (20 jobs)",
+    "mid": "0.4-0.7 (20 jobs)",
+    "low": "<0.4 (10 jobs)"
+  }
+}

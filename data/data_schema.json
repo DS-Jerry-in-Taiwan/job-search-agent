@@ -1,0 +1,17 @@
+{
+  "name": "string",
+  "total_experience_years": "float",
+  "skills": {
+    "programming": ["string"],
+    "ml_frameworks": ["string"],
+    "cloud_devops": ["string"]
+  },
+  "work_history": [
+    {
+      "company": "string",
+      "role": "string",
+      "duration": "string",
+      "key_tech": ["string"]
+    }
+  ]
+}

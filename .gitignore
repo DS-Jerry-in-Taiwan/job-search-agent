@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtualenv
+.venv/
+env/
+ENV/
+venv/
+pip-wheel-metadata/
+
+# VSCode
+.vscode/
+.history/
+
+# Test/coverage
+.coverage
+.pytest_cache/
+htmlcov/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Others
+*.swp
+*.bak
+*.tmp
