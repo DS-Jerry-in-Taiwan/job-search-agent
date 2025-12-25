@@ -33,3 +33,12 @@ Thumbs.db
 *.swp
 *.bak
 *.tmp
+
+# 不推送 agent prompt 與指令文件
+docs/agent_context/phase*/0*_agent_prompts_context.md
+docs/agent_context/phase*/05_dev_command.md
+docs/agent_context/phase*/04_agent_prompts_context.md
+docs/agent_context/phase*/05_validation_checklist.md
+docs/agent_context/phase*/06_delivery_record.md
+docs/agent_context/phase*/07_checkpoint_protocol.md
+docs/agent_prompt/
