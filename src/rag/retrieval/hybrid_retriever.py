@@ -13,6 +13,10 @@ class HybridRetriever:
         self.rrf_k = rrf_k
 
     def retrieve(self, query: str, top_k: int = 10, vector_top_k: int = 50, bm25_top_k: int = 50) -> List[Dict[str, Any]]:
+        # 保證 top_k, vector_top_k, bm25_top_k 為 int
+        top_k = int(top_k) if top_k is not None else 10
+        vector_top_k = int(vector_top_k) if vector_top_k is not None else 50
+        bm25_top_k = int(bm25_top_k) if bm25_top_k is not None else 50
         # 向量檢索
         query_vec = self.embedder.embed_text(query)
         vector_results = self.vector_store.search(query_vec, top_k=vector_top_k)

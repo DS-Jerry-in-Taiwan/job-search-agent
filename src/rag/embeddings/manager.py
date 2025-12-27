@@ -59,6 +59,12 @@ class EmbeddingManager:
                 time.sleep(1 + attempt)
         raise RuntimeError("Embedding failed after retries.")
 
+    def embed_query(self, text: str) -> List[float]:
+        """
+        對齊 RAGPipeline 介面，單一查詢向量化。
+        """
+        return self.embed_text(text)
+
     def embed_batch(self, texts: List[str]) -> List[List[float]]:
         """
         批次文本向量化。

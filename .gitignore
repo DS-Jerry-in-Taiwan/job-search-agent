@@ -52,12 +52,5 @@ docs/agent_prompt/
 *.meta
 *.npz
 
-# 忽略 phase10/phase11 的臨時開發文檔
-docs/agent_context/phase10/0*_dev_goal_context.md
-docs/agent_context/phase10/0*_dev_flow_context.md
-docs/agent_context/phase10/0*_agent_roles_context.md
-docs/agent_context/phase10/07_execution_mode.md
-docs/agent_context/phase11/0*_dev_goal_context.md
-docs/agent_context/phase11/0*_dev_flow_context.md
-docs/agent_context/phase11/0*_agent_roles_context.md
-docs/agent_context/phase11/07_execution_mode.md
+# 忽略臨時開發文檔
+docs/agent_context/*
