@@ -8,6 +8,25 @@ dist/
 build/
 .eggs/
 
+# Custom: 不推送大型二進位檔與敏感資料
+data/raw/resumes/
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.bmp
+*.gif
+*.tiff
+*.ico
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Custom: 不推送本地測試產生的 mock 資料
+data/mock/
+
 # Virtualenv
 .venv/
 env/
@@ -33,6 +52,8 @@ Thumbs.db
 *.swp
 *.bak
 *.tmp
+jobsearch.db
+data/mock/jobs/_MAIN_0.toc
 
 # 不推送 .env 檔案（API 金鑰）
 .env

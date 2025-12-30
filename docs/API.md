@@ -1,84 +1,48 @@
-# JobSearch Agent API 說明
+# StateGraph 可視化 API 文件
 
-## 主要端點
+## 端點說明
 
-### POST /api/chat
-- 說明：多智能體對話入口，調用 SupervisorAgent
-- 輸入：
+### GET /api/v1/graph/visualize
+
+- 功能：回傳 StateGraph 的流程圖（mermaid/dot 格式）、節點與邊結構
+- 回傳格式：
   ```json
   {
-    "message": "找台北 Python 工作",
-    "user_profile": {
-      "skills": ["Python"],
-      "experience_years": 3,
-      "location": "台北"
-    }
-  }
-  ```
-- 輸出：
-  ```json
-  {
-    "response": "推薦職缺...",
-    "status": "success"
+    "graph_svg": "mermaid 格式字串或 dot 格式字串",
+    "nodes": ["node1", "node2", ...],
+    "edges": ["edge1", "edge2", ...]
   }
   ```
 
-### GET /api/search
-- 說明：職缺搜尋，調用 JobSearchAgent
-- 輸入參數：`query` (string)
-- 輸出：
+- 範例請求：
+  ```
+  GET /api/v1/graph/visualize
+  ```
+
+- 範例回應：
   ```json
   {
-    "jobs": [],
-    "query": "Python"
+    "graph_svg": "graph TD; A-->B; B-->C;",
+    "nodes": ["A", "B", "C"],
+    "edges": ["A-->B", "B-->C"]
   }
   ```
 
-### POST /api/analyze
-- 說明：薪資分析，調用 SalaryAnalyzerAgent
-- 輸入參數：`job_title` (string), `experience` (int)
-- 輸出：
-  ```json
-  {
-    "salary_range": {},
-    "advice": "",
-    "job_title": "Python 後端",
-    "experience": 3
-  }
+## 多 workflow 支援
+
+- 可於 API 增加參數 workflow_id，根據 workflow_id 回傳不同 StateGraph。
+- 範例：
+  ```
+  GET /api/v1/graph/visualize?workflow_id=demo
   ```
 
-### GET /health
-- 說明：健康檢查
-- 輸出：
-  ```json
-  {
-    "status": "ok",
-    "version": "1.0.0"
-  }
-  ```
+## 前端渲染建議
 
-### GET /docs
-- 說明：Swagger/OpenAPI 文件
+- 使用 mermaid.js 或 graphviz.js 於前端渲染流程圖。
+- 參考 ui/graph_demo.html + ui/graph_demo.js 實作。
 
----
+## 驗收測試
 
-## 錯誤格式
-
-- HTTP 500:
-  ```json
-  {
-    "detail": "錯誤訊息"
-  }
-  ```
-
----
-
-## CORS 支援
-
-- 允許所有來源，支援跨域請求
-
----
-
-## 版本
-
-- v1.0.0
+- API 回傳格式正確
+- 前端可正確渲染流程圖
+- 多 workflow 切換無誤
