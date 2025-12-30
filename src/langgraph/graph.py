@@ -1,70 +1,60 @@
-from langgraph.graph import StateGraph, END
-from .state import AgentState
-from .nodes import (
-    load_context_node,
-    identify_intent_node,
-    decompose_tasks_node,
-    integrate_results_node,
-    update_memory_node
+# StateGraph workflow registry for多 workflow支援
+
+from langgraph.graph import StateGraph
+from src.state.schema import AgentState
+
+# 預設 workflow
+state_graph = StateGraph(AgentState)  # 以主結構 AgentState 初始化
+
+# 完整 workflow：參考 src/graph/workflow.py
+from src.nodes import (
+    resume_parser_node,
+    router_node,
+    job_matcher_node,
+    skill_analyzer_node,
+    recommendation_node,
+    conversation_node,
 )
-from .agent_nodes import (
-    job_search_node,
-    salary_analyze_node,
-    interview_coach_node,
-    resume_optimize_node
-)
 
-def route_to_agents(state: AgentState) -> str:
-    """根據意圖路由到相應的 Agent Node
+state_graph.add_node("resume_parser", resume_parser_node)
+state_graph.add_node("skill_analyzer", skill_analyzer_node)
+state_graph.add_node("job_matcher", job_matcher_node)
+state_graph.add_node("recommendation", recommendation_node)
+state_graph.add_node("conversation", conversation_node)
+state_graph.add_node("router", router_node)
 
-    根據第一個任務的 intent 分流到不同 Agent 節點。
+state_graph.add_edge("resume_parser", "skill_analyzer")
+state_graph.add_edge("skill_analyzer", "job_matcher")
+state_graph.add_edge("job_matcher", "recommendation")
+state_graph.add_edge("recommendation", "router")
+state_graph.add_edge("conversation", "router")
+state_graph.set_entry_point("resume_parser")
+
+def stategraph_to_mermaid(graph_obj):
     """
-    if not state["tasks"]:
-        return "integrate_results"
-    intent = state["tasks"][0].get("intent")
-    intent_mapping = {
-        "search_job": "job_search",
-        "analyze_salary": "salary_analyze",
-        "prepare_interview": "interview_coach",
-        "optimize_resume": "resume_optimize"
-    }
-    return intent_mapping.get(intent, "integrate_results")
-
-def create_workflow() -> StateGraph:
-    """創建 LangGraph 工作流程
-
-    Returns:
-        未編譯的 StateGraph
+    根據 StateGraph 結構自動組裝 mermaid 流程圖代碼
     """
-    workflow = StateGraph(AgentState)
-    workflow.add_node("load_context", load_context_node)
-    workflow.add_node("identify_intent", identify_intent_node)
-    workflow.add_node("decompose_tasks", decompose_tasks_node)
-    workflow.add_node("job_search", job_search_node)
-    workflow.add_node("salary_analyze", salary_analyze_node)
-    workflow.add_node("interview_coach", interview_coach_node)
-    workflow.add_node("resume_optimize", resume_optimize_node)
-    workflow.add_node("integrate_results", integrate_results_node)
-    workflow.add_node("update_memory", update_memory_node)
+    lines = ["graph TD"]
+    # 不用引號，改用簡單節點名稱避免語法錯誤
+    for edge in getattr(graph_obj, "edges", []):
+        if isinstance(edge, tuple) and len(edge) == 2:
+            lines.append(f"  {edge[0]}-->{edge[1]}")
+    return "\n".join(lines)
 
-    workflow.set_entry_point("load_context")
-    workflow.add_edge("load_context", "identify_intent")
-    workflow.add_edge("identify_intent", "decompose_tasks")
-    workflow.add_conditional_edges(
-        "decompose_tasks",
-        route_to_agents,
-        {
-            "job_search": "job_search",
-            "salary_analyze": "salary_analyze",
-            "interview_coach": "interview_coach",
-            "resume_optimize": "resume_optimize",
-            "integrate_results": "integrate_results"
-        }
-    )
-    workflow.add_edge("job_search", "integrate_results")
-    workflow.add_edge("salary_analyze", "integrate_results")
-    workflow.add_edge("interview_coach", "integrate_results")
-    workflow.add_edge("resume_optimize", "integrate_results")
-    workflow.add_edge("integrate_results", "update_memory")
-    workflow.add_edge("update_memory", END)
-    return workflow
+# 其他 workflow 可依需求擴充
+workflow_registry = {
+    "default": state_graph,
+    # "demo": demo_state_graph,
+    # "custom": custom_state_graph,
+}
+
+# 官方建議：提供 workflow.app 供 langgraph.ui 掛載
+try:
+    from langgraph.ui import create_service
+    app = state_graph.compile()
+    service = create_service(app)
+except ImportError:
+    service = None
+
+def get_state_graph_by_id(workflow_id: str):
+    return workflow_registry.get(workflow_id, state_graph)
