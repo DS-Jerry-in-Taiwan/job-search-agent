@@ -1,29 +1,34 @@
 import pytest
-from src.state.operations import create_initial_state
-from src.nodes.utils import skill_analyzer_node
+from src.nodes.skill_analyzer import skill_analyzer_node
 
-def test_skill_analyzer_node_python():
-    """測試技能增強（含 Python）"""
-    state = create_initial_state()
-    state["user_profile"]["skills"] = ["Python"]
-    result = skill_analyzer_node(state)
-    assert "Django" in result["user_profile"]["skills"]
-    assert "Flask" in result["user_profile"]["skills"]
-    assert result["system"]["current_node"] == "skill_analyzer"
+def make_state(skills):
+    return {
+        "user_profile": {
+            "skills": skills
+        },
+        "system": {}
+    }
 
-def test_skill_analyzer_node_javascript():
-    """測試技能增強（含 JavaScript）"""
-    state = create_initial_state()
-    state["user_profile"]["skills"] = ["JavaScript"]
-    result = skill_analyzer_node(state)
-    assert "TypeScript" in result["user_profile"]["skills"]
-    assert "Node.js" in result["user_profile"]["skills"]
-    assert result["system"]["current_node"] == "skill_analyzer"
+def test_skill_analyzer_no_ai():
+    state = make_state(["Python", "Docker"])
+    out = skill_analyzer_node(state)
+    assert out["user_profile"]["skill_analysis"] == "推薦學習 AI/深度學習技能"
+    assert out["next_action"] == "job_matcher"
 
-def test_skill_analyzer_node_no_enhance():
-    """測試技能增強（無增強條件）"""
-    state = create_initial_state()
-    state["user_profile"]["skills"] = ["SQL"]
-    result = skill_analyzer_node(state)
-    assert set(result["user_profile"]["skills"]) == {"SQL"}
-    assert result["system"]["current_node"] == "skill_analyzer"
+def test_skill_analyzer_no_docker():
+    state = make_state(["Python", "AI"])
+    out = skill_analyzer_node(state)
+    assert out["user_profile"]["skill_analysis"] == "推薦補強 Docker/DevOps 技能"
+    assert out["next_action"] == "job_matcher"
+
+def test_skill_analyzer_no_python():
+    state = make_state(["AI", "Docker"])
+    out = skill_analyzer_node(state)
+    assert out["user_profile"]["skill_analysis"] == "推薦學習 Python"
+    assert out["next_action"] == "job_matcher"
+
+def test_skill_analyzer_full():
+    state = make_state(["Python", "AI", "Docker"])
+    out = skill_analyzer_node(state)
+    assert out["user_profile"]["skill_analysis"] == "技能組合完整，可進階專案管理"
+    assert out["next_action"] == "job_matcher"

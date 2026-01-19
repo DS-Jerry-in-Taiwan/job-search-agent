@@ -1,35 +1,46 @@
 import pytest
-from src.state.operations import create_initial_state
 from src.nodes.conversation import conversation_node
-from langchain_core.messages import AIMessage
 
-def test_conversation_node_job_search():
-    """測試 job_search 意圖回應"""
-    state = create_initial_state()
-    state["conversation"]["current_intent"] = "job_search"
-    state["job_state"]["matched_jobs"] = [{}] * 3
-    result = conversation_node(state)
-    from langchain_core.messages import AIMessage
-    assert isinstance(result["conversation"]["messages"][-1], AIMessage)
-    assert getattr(result["conversation"]["messages"][-1], "content", None) is not None
-    assert "3 個符合的職缺" in result["conversation"]["messages"][-1].content
-    assert result["system"]["current_node"] == "conversation"
+def make_state(intent, context=None, job_state=None, user_profile=None):
+    return {
+        "conversation": {
+            "current_intent": intent,
+            "context": context or {},
+            "messages": []
+        },
+        "job_state": job_state or {},
+        "user_profile": user_profile or {},
+        "system": {}
+    }
 
-def test_conversation_node_skill_analysis():
-    """測試 skill_analysis 意圖回應"""
-    state = create_initial_state()
-    state["conversation"]["current_intent"] = "skill_analysis"
-    state["user_profile"]["skills"] = ["Python", "SQL"]
-    result = conversation_node(state)
-    msg = result["conversation"]["messages"][-1].content
-    assert "Python" in msg and "SQL" in msg
-    assert result["system"]["current_node"] == "conversation"
+def test_conversation_greet():
+    state = make_state("greet")
+    out = conversation_node(state)
+    assert out["conversation"]["messages"][-1]["content"].startswith("您好")
+    assert out["system"]["current_node"] == "conversation"
 
-def test_conversation_node_general():
-    """測試 general 意圖回應"""
-    state = create_initial_state()
-    state["conversation"]["current_intent"] = "general"
-    result = conversation_node(state)
-    msg = result["conversation"]["messages"][-1].content
-    assert "職涯搜尋" in msg
-    assert result["system"]["current_node"] == "conversation"
+def test_conversation_ask_recommendation():
+    jobs = [{"id": "job_1"}, {"id": "job_2"}]
+    state = make_state("ask_recommendation", job_state={"recommendations": jobs})
+    out = conversation_node(state)
+    assert "job_1" in out["conversation"]["messages"][-1]["content"]
+    assert out["system"]["current_node"] == "conversation"
+
+def test_conversation_ask_skill_advice():
+    state = make_state("ask_skill_advice", user_profile={"skill_analysis": "補強AI"})
+    out = conversation_node(state)
+    assert "補強AI" in out["conversation"]["messages"][-1]["content"]
+    assert out["system"]["current_node"] == "conversation"
+
+def test_conversation_goodbye():
+    state = make_state("goodbye")
+    out = conversation_node(state)
+    assert "祝您求職順利" in out["conversation"]["messages"][-1]["content"]
+    assert out["next_action"] == "end"
+    assert out["system"]["current_node"] == "conversation"
+
+def test_conversation_default():
+    state = make_state("other", context={"user_message": "請推薦職缺"})
+    out = conversation_node(state)
+    assert "請推薦職缺" in out["conversation"]["messages"][-1]["content"]
+    assert out["system"]["current_node"] == "conversation"

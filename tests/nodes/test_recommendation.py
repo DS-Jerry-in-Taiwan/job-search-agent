@@ -1,30 +1,40 @@
 import pytest
-from src.state.operations import create_initial_state
-from src.nodes.utils import recommendation_node
+from src.nodes.recommendation import recommendation_node
 
-def test_recommendation_node_basic():
-    """測試推薦理由產生"""
-    state = create_initial_state()
-    # 模擬已匹配職缺與分數
-    state["job_state"]["matched_jobs"] = [
-        {"id": "job_001", "title": "AI工程師"},
-        {"id": "job_002", "title": "後端工程師"},
-    ]
-    state["job_state"]["match_scores"] = {
-        "job_001": 0.85,
-        "job_002": 0.6,
+def test_recommendation_node_pref_location():
+    state = {
+        "user_profile": {"preferences": {"location": "台北", "remote": True}},
+        "job_state": {
+            "matched_jobs": [
+                {"id": "job_1", "location": "台北", "remote": True},
+                {"id": "job_2", "location": "高雄", "remote": True},
+                {"id": "job_3", "location": "台北", "remote": False},
+                {"id": "job_4", "location": "新竹", "remote": False}
+            ]
+        },
+        "system": {}
     }
-    result = recommendation_node(state)
-    assert len(result["job_state"]["recommendations"]) == 2
-    assert "AI工程師" in result["job_state"]["recommendations"][0]
-    assert "85%" in result["job_state"]["recommendations"][0]
-    assert result["system"]["current_node"] == "recommendation"
+    out = recommendation_node(state)
+    rec_ids = [j["id"] for j in out["job_state"]["recommendations"]]
+    # 台北優先，remote次之，補齊3個
+    assert rec_ids[0] == "job_1"
+    assert rec_ids[1] == "job_3" or rec_ids[1] == "job_2"
+    assert len(rec_ids) == 3
+    assert out["system"]["current_node"] == "recommendation"
 
-def test_recommendation_node_empty():
-    """測試無匹配職缺時推薦為空"""
-    state = create_initial_state()
-    state["job_state"]["matched_jobs"] = []
-    state["job_state"]["match_scores"] = {}
-    result = recommendation_node(state)
-    assert result["job_state"]["recommendations"] == []
-    assert result["system"]["current_node"] == "recommendation"
+def test_recommendation_node_no_pref():
+    state = {
+        "user_profile": {"preferences": {}},
+        "job_state": {
+            "matched_jobs": [
+                {"id": "job_1", "location": "台北", "remote": True},
+                {"id": "job_2", "location": "高雄", "remote": True},
+                {"id": "job_3", "location": "台中", "remote": False}
+            ]
+        },
+        "system": {}
+    }
+    out = recommendation_node(state)
+    rec_ids = [j["id"] for j in out["job_state"]["recommendations"]]
+    assert len(rec_ids) == 3
+    assert out["system"]["current_node"] == "recommendation"

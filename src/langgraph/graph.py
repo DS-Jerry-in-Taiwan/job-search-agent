@@ -14,6 +14,7 @@ from src.nodes import (
     skill_analyzer_node,
     recommendation_node,
     conversation_node,
+    finalizer_node,
 )
 
 state_graph.add_node("resume_parser", resume_parser_node)
@@ -22,13 +23,16 @@ state_graph.add_node("job_matcher", job_matcher_node)
 state_graph.add_node("recommendation", recommendation_node)
 state_graph.add_node("conversation", conversation_node)
 state_graph.add_node("router", router_node)
+state_graph.add_node("finalizer", finalizer_node)
 
 state_graph.add_edge("resume_parser", "skill_analyzer")
 state_graph.add_edge("skill_analyzer", "job_matcher")
 state_graph.add_edge("job_matcher", "recommendation")
 state_graph.add_edge("recommendation", "router")
 state_graph.add_edge("conversation", "router")
-state_graph.set_entry_point("resume_parser")
+# 無法用 condition 關鍵字，改為在 router_node 內 next_action="finalizer" 時 return
+state_graph.add_edge("router", "finalizer")
+state_graph.set_entry_point("conversation")
 
 def stategraph_to_mermaid(graph_obj):
     """

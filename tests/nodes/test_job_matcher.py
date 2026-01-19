@@ -1,22 +1,34 @@
 import pytest
-from src.state.operations import create_initial_state
-from src.nodes.resume_parser import resume_parser_node
-from src.nodes.job_matcher import job_matcher_node, calculate_match_score
+from src.nodes.job_matcher import job_matcher_node
+import json
+from pathlib import Path
 
-def test_job_matcher_node():
-    """測試職缺匹配節點"""
-    state = create_initial_state()
-    state = resume_parser_node(state)  # 先解析履歷
-    result = job_matcher_node(state)
-    assert result["job_state"]["matched_jobs"]
-    assert result["job_state"]["match_scores"]
-    assert len(result["job_state"]["jobs"]) > 0
-    assert result["system"]["current_node"] == "job_matcher"
+def setup_jobs(tmp_path):
+    jobs = [
+        {"id": "job_1", "requirements": ["python", "ai"]},
+        {"id": "job_2", "requirements": ["javascript", "react"]},
+        {"id": "job_3", "requirements": ["docker", "kubernetes"]},
+        {"id": "job_4", "requirements": ["python", "docker", "ai"]}
+    ]
+    jobs_path = tmp_path / "jobs.json"
+    with open(jobs_path, "w", encoding="utf-8") as f:
+        json.dump(jobs, f)
+    return jobs_path
 
-def test_calculate_match_score():
-    """測試匹配分數計算"""
-    user_skills = {"python", "docker"}
-    job = {"job_id": "001", "requirements": "Python Docker Kubernetes"}
-    score = calculate_match_score(user_skills, job)
-    assert 0.0 <= score <= 1.0
-    assert score > 0  # 應該有匹配
+def test_job_matcher(tmp_path, monkeypatch):
+    jobs_path = setup_jobs(tmp_path)
+    monkeypatch.setattr("pathlib.Path.exists", lambda self: True)
+    monkeypatch.setattr("pathlib.Path.open", lambda self, mode="r", encoding=None: open(jobs_path, mode, encoding=encoding))
+
+    state = {
+        "user_profile": {"skills": ["python", "ai", "docker"]},
+        "job_state": {},
+        "system": {}
+    }
+    out = job_matcher_node(state, jobs_path=str(jobs_path))
+    # job_4 完全匹配，job_1 部分匹配
+    assert any(j["id"] == "job_4" for j in out["job_state"]["matched_jobs"])
+    assert any(j["id"] == "job_1" for j in out["job_state"]["matched_jobs"])
+    assert out["system"]["current_node"] == "job_matcher"
+    assert out["job_state"]["match_scores"]["job_4"] == 1.0
+    assert out["job_state"]["match_scores"]["job_1"] == 1.0

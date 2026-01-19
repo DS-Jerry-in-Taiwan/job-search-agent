@@ -7,7 +7,7 @@ from typing import Dict
 
 def router_node(state: AgentState) -> AgentState:
     """
-    工作流程路由器 → 決定下一步
+    工作流程路由器 → 決定下一步（Decision Agent 參與決策）
 
     輸入: state 整體狀態
     輸出: dict，包含 next node 名稱
@@ -16,6 +16,7 @@ def router_node(state: AgentState) -> AgentState:
     - "resume_parser": 履歷未解析
     - "job_matcher": 履歷已解析但未匹配
     - "conversation": 需要對話回應
+    - "decision_agent": 進入決策智能體
     - "__end__": 工作流程結束
     """
     config_path = Path("config/config.yaml")
@@ -27,9 +28,43 @@ def router_node(state: AgentState) -> AgentState:
     else:
         max_turn = 3
         end_status = "__end__"
-        
+
+    # 決策智能體參與分流
+    from src.decision.decision_agent import run_decision_agent
+
     if state["job_state"].get("status") == "empty":
-        state["next_action"] = "__end__"
+        state["next_action"] = "finalizer"
+        return state
+
+    # 若已完成履歷解析與職缺匹配，進入 decision agent 決策
+    if (
+        state["user_profile"].get("parsed_at")
+        and state["job_state"].get("matched_jobs")
+        and not state.get("decision_result")
+    ):
+        # 模擬分數，可根據 state 實際內容設計
+        raw_scores = {
+            "skill_match": state["user_profile"].get("skill_score", 60),
+            "experience_match": state["user_profile"].get("exp_score", 70),
+            "preference_match": state["user_profile"].get("pref_score", 65)
+        }
+        weights = {"skill": 0.5, "experience": 0.3, "preference": 0.2}
+        decision_result = run_decision_agent(
+            case_id=state.get("session_id", "default"),
+            raw_scores=raw_scores,
+            weights=weights,
+            normalization_method="min-max"
+        )
+        state["decision_result"] = decision_result
+        # 根據決策分數分流
+        if decision_result["final_score"] > 0.8:
+            state["next_action"] = "skill_analyzer"
+        elif decision_result["final_score"] > 0.6:
+            state["next_action"] = "recommendation"
+        elif decision_result["final_score"] < 0.4:
+            state["next_action"] = "conversation"
+        else:
+            state["next_action"] = "finalizer"
         return state
 
     if not state["user_profile"].get("parsed_at"):
@@ -44,7 +79,7 @@ def router_node(state: AgentState) -> AgentState:
         state["conversation"]["current_intent"] = "general"
         state["next_action"] = "conversation"
     else:
-        state["next_action"] = end_status
+        state["next_action"] = "finalizer"
     return state
 
 def error_handler_node(state: AgentState) -> AgentState:
