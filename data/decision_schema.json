@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DecisionAgentOutput",
+  "type": "object",
+  "properties": {
+    "case_id": { "type": "string", "description": "決策案例唯一識別碼" },
+    "raw_scores": {
+      "type": "object",
+      "description": "各項目原始分數",
+      "properties": {
+        "skill_match": { "type": "number" },
+        "experience_match": { "type": "number" },
+        "preference_match": { "type": "number" }
+      },
+      "required": ["skill_match", "experience_match", "preference_match"]
+    },
+    "weights": {
+      "type": "object",
+      "description": "各項目加權權重",
+      "properties": {
+        "skill": { "type": "number" },
+        "experience": { "type": "number" },
+        "preference": { "type": "number" }
+      },
+      "required": ["skill", "experience", "preference"]
+    },
+    "normalized_scores": {
+      "type": "object",
+      "description": "正規化後分數",
+      "properties": {
+        "skill": { "type": "number" },
+        "experience": { "type": "number" },
+        "preference": { "type": "number" }
+      },
+      "required": ["skill", "experience", "preference"]
+    },
+    "normalization_method": {
+      "type": "string",
+      "description": "正規化方法（如 min-max, z-score, softmax, ratio）"
+    },
+    "final_score": { "type": "number", "description": "加權總分" },
+    "action_plan": {
+      "type": "array",
+      "description": "結構化行動建議",
+      "items": {
+        "type": "object",
+        "properties": {
+          "step": { "type": "string" },
+          "description": { "type": "string" }
+        },
+        "required": ["step", "description"]
+      }
+    }
+  },
+  "required": ["case_id", "raw_scores", "weights", "normalized_scores", "final_score", "action_plan"]
+}

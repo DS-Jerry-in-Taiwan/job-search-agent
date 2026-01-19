@@ -1,35 +1,35 @@
-"""LangGraph 工作流程測試 - Phase 5"""
-
 import pytest
-from src.graph.workflow import create_workflow
-from src.state.operations import create_initial_state
+from src.langgraph.graph import state_graph, workflow_registry
+from src.state.schema import AgentState
 
-def test_create_workflow():
-    """測試 Graph 建立"""
-    app = create_workflow()
-    assert app is not None
+def make_full_state(user_message):
+    return AgentState(
+        user_profile={},
+        job_state={},
+        conversation={
+            "current_intent": "general",
+            "turn_count": 0,
+            "context": {"user_message": user_message},
+            "messages": []
+        },
+        system={},
+        session_id="workflow_e2e"
+    )
 
-def test_workflow_execution():
-    """測試完整工作流程執行"""
-    app = create_workflow()
-    state = create_initial_state()
+def test_workflow_e2e_high_score():
+    resume_text = "3年Python工程師經驗，熟悉AI、JavaScript"
+    state = make_full_state(resume_text)
+    app = workflow_registry["default"].compile()
     result = app.invoke(state)
-    assert result["user_profile"]["skills"]
-    assert result["job_state"]["matched_jobs"]
-    assert result["is_complete"] is True
+    assert "decision_result" in result
+    assert result["decision_result"]["final_score"] >= 0.8
+    assert result["is_complete"] or result["system"].get("workflow_status") == "completed"
 
-def test_workflow_state_updates():
-    """測試 State 更新"""
-    app = create_workflow()
-    state = create_initial_state()
+def test_workflow_e2e_mid_score():
+    resume_text = "2年Java工程師經驗，略懂AI"
+    state = make_full_state(resume_text)
+    app = workflow_registry["default"].compile()
     result = app.invoke(state)
-    assert result["user_profile"].get("parsed_at") is not None
-    assert result["job_state"].get("last_updated") is not None
-    assert len(result["job_state"]["matched_jobs"]) > 0
-
-def test_workflow_routing():
-    """測試路由邏輯"""
-    app = create_workflow()
-    state = create_initial_state()
-    result = app.invoke(state)
-    assert result["system"]["workflow_status"] in ["completed", "finalizer", "conversation"]
+    assert "decision_result" in result
+    assert 0.4 <= result["decision_result"]["final_score"] < 0.8
+    assert result["is_complete"] or result["system"].get("workflow_status") == "completed"

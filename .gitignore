@@ -7,6 +7,131 @@ __pycache__/
 dist/
 build/
 .eggs/
+# Jupyter
+.ipynb_checkpoints/
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+# pytype
+.pytype/
+# Cython debug
+cython_debug/
+# Coverage
+.coverage
+.coverage.*
+htmlcov/
+# Test/coverage
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+cover/
+# VSCode
+.vscode/
+.history/
+.code-workspace
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+# dotenv
+.env
+.env.*
+# Virtualenv
+.venv/
+env/
+ENV/
+venv/
+pip-wheel-metadata/
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-error.log*
+yarn-debug.log*
+package-lock.json
+yarn.lock
+# UI build artifacts
+ui/dist/
+ui/build/
+ui/.cache/
+ui/.next/
+ui/.nuxt/
+ui/.output/
+ui/.vercel/
+ui/.netlify/
+ui/.firebase/
+ui/.expo/
+ui/.expo-shared/
+ui/.idea/
+ui/.vscode/
+ui/.DS_Store
+ui/Thumbs.db
+ui/.env
+ui/.env.*
+# Local data, cache, and test artifacts
+data/parsed/
+data/mock/
+data/raw/
+*.sqlite3
+*.db
+*.pkl
+*.tmp
+*.bak
+*.swp
+*.swo
+*.log
+*.out
+# Test output
+*.testoutput
+test-results/
+test-output/
+test.log
+# Misc
+*.bak
+*.tmp
+*.swp
+*.swo
+*.orig
+*.rej
+*.log
+*.out
+*.pid
+*.seed
+*.pid.lock
+*.lock
+*.lockfile
+*.cache
+.cache/
+*.tgz
+*.tar.gz
+*.zip
+*.7z
+*.rar
+*.gz
+*.tar
+*.bz2
+*.xz
+*.lz
+*.lzma
+*.zst
+*.lz4
+*.snap
+*.sublime-workspace
+*.sublime-project
+.idea/
+*.iml
+*.ipr
+*.iws
+*.suo
+*.ntvs_analysis.dat
+*.njsproj
+*.sln
+*.sw?
 
 # Custom: 不推送大型二進位檔與敏感資料
 data/raw/resumes/
@@ -75,3 +200,4 @@ docs/agent_prompt/
 
 # 忽略臨時開發文檔
 docs/agent_context/*
+docs/dev/*
