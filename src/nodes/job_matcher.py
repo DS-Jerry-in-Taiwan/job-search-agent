@@ -24,11 +24,22 @@ def job_matcher_node(state: AgentState, jobs_path: str = None) -> AgentState:
     else:
         jobs_path_obj = Path(jobs_path)
     if not jobs_path_obj.exists():
+        state["system"]["error_type"] = "DATA_MISSING"
         state["system"]["error_message"] = "職缺資料不存在"
+        state["system"]["retry_flag"] = False
+        state["system"]["last_failed_node"] = "job_matcher"
+        state["next_action"] = "error_handler"
         return state
-
-    with open(jobs_path_obj, "r", encoding="utf-8") as f:
-        jobs = json.load(f)
+    try:    
+        with open(jobs_path_obj, "r", encoding="utf-8") as f:
+            jobs = json.load(f)
+    except Exception as e:
+        state["system"]["error_type"] = "DATA_LOAD_ERROR"
+        state["system"]["error_message"] = f"職缺資料讀取錯誤: {str(e)}"
+        state["system"]["retry_flag"] = True
+        state["system"]["last_failed_node"] = "job_matcher"
+        state["next_action"] = "error_handler"
+        return state
 
     matched_jobs: List[Dict[str, Any]] = []
     match_scores: Dict[str, float] = {}
@@ -48,4 +59,6 @@ def job_matcher_node(state: AgentState, jobs_path: str = None) -> AgentState:
     state["job_state"]["match_scores"] = match_scores
     state["job_state"]["last_updated"] = datetime.now()
     state["system"]["current_node"] = "job_matcher"
+    # 執行完推進到 decision
+    state["next_action"] = "decision"
     return state

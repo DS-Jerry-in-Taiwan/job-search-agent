@@ -41,7 +41,11 @@ def resume_parser_node(state: AgentState) -> AgentState:
     """
     pdf_path = state["user_profile"].get("resume_path")
     if not pdf_path:
+        state["system"]["error_type"] = "DATA_MISSING"
         state["system"]["error_message"] = "resume_path 未提供"
+        state["system"]["retry_flag"] = False
+        state["system"]["last_failed_node"] = "resume_parser"
+        state["next_action"] = "error_handler"
         return state
 
     try:
@@ -51,7 +55,11 @@ def resume_parser_node(state: AgentState) -> AgentState:
             for page in reader.pages:
                 text += page.extract_text() or ""
     except Exception as e:
+        state["system"]["error_type"] = "PARSE_ERROR"
         state["system"]["error_message"] = f"PDF解析失敗: {e}"
+        state["system"]["retry_flag"] = True
+        state["system"]["last_failed_node"] = "resume_parser"
+        state["next_action"] = "error_handler"
         return state
 
     skills = extract_skills_from_text(text)
@@ -73,4 +81,6 @@ def resume_parser_node(state: AgentState) -> AgentState:
     state["user_profile"]["exp_score"] = calculate_exp_score(experience_years)
     state["user_profile"]["pref_score"] = calculate_pref_score(preferences)
     state["system"]["current_node"] = "resume_parser"
+    # 解析成功，推進到 decision 節點
+    state["next_action"] = "decision"
     return state
