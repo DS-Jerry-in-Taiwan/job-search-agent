@@ -8,9 +8,11 @@ from src.nodes import (
     skill_analyzer_node,
     recommendation_node,
     conversation_node,
+    decision_node,
     router_node,
     error_handler_node,
     finalizer_node,
+    manual_review_node,
 )
 
 from typing import Any
@@ -30,32 +32,45 @@ def create_workflow() -> Any:
     workflow.add_node("skill_analyzer", skill_analyzer_node)
     workflow.add_node("recommendation", recommendation_node)
     workflow.add_node("conversation", conversation_node)
+    workflow.add_node("decision", decision_node)
     workflow.add_node("router", router_node)
     workflow.add_node("error_handler", error_handler_node)
+    workflow.add_node("manual_review", manual_review_node)
     workflow.add_node("finalizer", finalizer_node)
 
     # 固定 Edges
+    workflow.add_edge("conversation", "decision")
+    workflow.add_edge("decision", "router")
     workflow.add_edge("resume_parser", "router")
-    workflow.add_edge("job_matcher", "recommendation")
+    workflow.add_edge("job_matcher", "decision")
     workflow.add_edge("recommendation", "router")
-    workflow.add_edge("conversation", "router")
-    workflow.add_edge("error_handler", "router")
+    workflow.add_edge("skill_analyzer", "decision")
+    workflow.add_edge("error_handler", "decision")
+    workflow.add_edge("manual_review", "decision")
     workflow.add_edge("finalizer", END)
 
     # 條件路由 (router_node)
     workflow.add_conditional_edges(
         "router",
-        lambda state: router_node(state)["next_action"],
+        lambda state: router_node(state)["next_node"],
         {
             "resume_parser": "resume_parser",
+            "resume_parser_node": "resume_parser",
             "job_matcher": "job_matcher",
+            "recommendation": "recommendation",
+            "skill_analyzer": "skill_analyzer",
             "conversation": "conversation",
-            "__end__": "finalizer"
+            "human_review_node": "manual_review",
+            "manual_review": "manual_review",
+            "error_handler": "error_handler",
+            "decision": "decision",
+            "__end__": "finalizer",
+            "finalizer": "finalizer"
         }
     )
 
     # 設定入口點
-    workflow.set_entry_point("resume_parser")
+    workflow.set_entry_point("conversation")
 
     # 編譯 Graph
     app = workflow.compile()

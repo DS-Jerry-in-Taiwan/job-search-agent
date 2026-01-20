@@ -38,11 +38,20 @@ class SystemState(TypedDict):
     """系統執行狀態
     追蹤執行節點、流程狀態、錯誤與元數據。
     """
-    current_node: str                     # 當前執行節點
-    workflow_status: str                  # 工作流程狀態
-    error_message: Optional[str]          # 錯誤訊息
-    retry_count: int                      # 重試次數
-    metadata: Dict[str, Any]              # 元數據
+    current_node: str                                 # 當前執行節點
+    workflow_status: str                              # 工作流程狀態
+    error_message: Optional[str]                      # 錯誤訊息
+    error_type: Optional[str]                         # 錯誤類型
+    last_failed_node: Optional[str]                   # 最後錯誤節點
+    retry_flag: Optional[bool]                        # 是否重試中
+    retry_count: int                                  # 重試次數
+    manual_review_reason: Optional[str]               # 人工審核原因
+    manual_review_status: Optional[str]               # 人工審核狀態
+    manual_review_result: Optional[str]               # 人工審核結果
+    manual_review_slack_error: Optional[str]          # Slack 通知錯誤
+    error_history: Optional[List[Dict[str, Any]]]     # 錯誤歷程
+    extra_info: Optional[Dict[str, Any]]              # 額外資訊
+    metadata: Dict[str, Any]                          # 元數據
 
 class AgentState(TypedDict):
     """整合的 Agent 狀態
