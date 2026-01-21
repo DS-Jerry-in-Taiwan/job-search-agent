@@ -25,11 +25,11 @@ def calculate_pref_score(preferences: dict) -> int:
     # 假設有remote+20分，有台北+20分，有薪資+20分，最多100分
     score = 0
     if preferences.get("remote"):
-        score += 20
+        score += 30
     if preferences.get("location") == "台北":
-        score += 20
+        score += 40
     if preferences.get("salary_range"):
-        score += 20
+        score += 30
     return min(score, 100)
 
 def resume_parser_node(state: AgentState) -> AgentState:

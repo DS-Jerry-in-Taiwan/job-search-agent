@@ -41,18 +41,8 @@ def job_matcher_node(state: AgentState, jobs_path: str = None) -> AgentState:
         state["next_action"] = "error_handler"
         return state
 
-    matched_jobs: List[Dict[str, Any]] = []
-    match_scores: Dict[str, float] = {}
-
-    for job in jobs:
-        job_skills = set(s.lower() for s in job.get("requirements", []))
-        score = calculate_match_score(user_skills, job_skills)
-        job_id = job.get("job_id") or job.get("id")
-        if score >= 0.3:
-            matched_jobs.append(job)
-            match_scores[job_id] = score
-
-    matched_jobs.sort(key=lambda j: match_scores.get(j.get("job_id") or j.get("id"), 0.0), reverse=True)
+    from src.agent.services.job_match_service import match_jobs
+    matched_jobs, match_scores = match_jobs(user_skills, jobs, min_score=0.3)
 
     state["job_state"]["jobs"] = jobs
     state["job_state"]["matched_jobs"] = matched_jobs

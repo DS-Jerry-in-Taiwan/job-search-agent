@@ -1,6 +1,6 @@
 from src.state.schema import AgentState
 
-def skill_analyzer_node(state: AgentState) -> AgentState:
+def skill_analyzer(state: AgentState) -> AgentState:
     """
     真實技能分析節點
     根據履歷技能，分析技能短板、推薦提升方向
@@ -9,16 +9,11 @@ def skill_analyzer_node(state: AgentState) -> AgentState:
     """
     try:
         skills = set(state["user_profile"].get("skills", []))
-        # 假設有AI、Python、Docker等技能，推薦不同提升方向
-        if "AI" not in skills:
-            suggestion = "推薦學習 AI/深度學習技能"
-        elif "Docker" not in skills:
-            suggestion = "推薦補強 Docker/DevOps 技能"
-        elif "Python" not in skills:
-            suggestion = "推薦學習 Python"
-        else:
-            suggestion = "技能組合完整，可進階專案管理"
+        from src.agent.services.skill_service import analyze_skills
+        suggestion = analyze_skills(skills)
         state["user_profile"]["skill_analysis"] = suggestion
+        state["system"]["debug_skill_analysis"] = state["user_profile"]["skill_analysis"]
+        state["system"]["debug_skill_analyzer_state"] = str(state)
         state["system"]["current_node"] = "skill_analyzer"
         # 執行完推進到 decision
         state["next_action"] = "decision"

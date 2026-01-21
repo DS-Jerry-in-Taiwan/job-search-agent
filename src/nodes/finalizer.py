@@ -1,7 +1,7 @@
 def finalizer_node(state):
     """
-    結束流程的收尾節點，可做日誌、狀態保存等
+    結束流程的收尾節點：僅負責流程調度，所有功能調用 finalizer_service
     """
-    state["system"]["current_node"] = "finalizer"
-    state["system"]["workflow_status"] = "finished"
+    from src.agent.services.finalizer_service import finalize_state
+    state = finalize_state(state)
     return state
