@@ -49,21 +49,25 @@ def decision_node(state: AgentState) -> AgentState:
         state["next_action"] = "finalizer"
         return state
     
+    print("--------------------------------")
+    print(state.get("next_action", "No next_action in system"))
+    print("--------------------------------")
+    
     if (
         state["user_profile"].get("parsed_at")
         and state["job_state"].get("matched_jobs")
         and not state.get("decision_result")
     ):
         print("Entering decision agent...")
-        from src.decision.decision_agent import run_decision_agent
+        from src.agent.services.decision_service import run_decision_service
         raw_scores = {
             "skill_match": state["user_profile"].get("skill_score", 60),
             "experience_match": state["user_profile"].get("exp_score", 70),
             "preference_match": state["user_profile"].get("pref_score", 65)
         }
-        weights = {"skill": 0.5, "experience": 0.3, "preference": 0.2}
-        from src.decision.decision_agent import run_decision_agent
-        decision_result = run_decision_agent(
+        print(f"Raw scores: {raw_scores}")
+        weights = {"skill": 0.2, "experience": 0.6, "preference": 1.0}
+        decision_result = run_decision_service(
             case_id=state.get("session_id", "default"),
             raw_scores=raw_scores,
             weights=weights,
@@ -71,8 +75,13 @@ def decision_node(state: AgentState) -> AgentState:
         )
         state["decision_result"] = decision_result
         state["system"]["decision_result"] = decision_result
-        if decision_result["final_score"] > 0.8:
-            state["next_action"] = "skill_analyzer"
+        # 若已分析過技能則不再進入 skill_analyzer
+        if decision_result["final_score"] > 0.7:
+            if not state["user_profile"].get("skill_analysis"):
+                state["next_action"] = "skill_analyzer"
+            else:
+                print("Skill already analyzed, skipping skill_analyzer.")
+                state["next_action"] = "finalizer"
         elif decision_result["final_score"] > 0.6:
             state["next_action"] = "recommendation"
         else:

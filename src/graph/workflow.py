@@ -2,17 +2,21 @@
 
 from langgraph.graph import StateGraph, END
 from src.state.schema import AgentState
-from src.nodes import (
+from src.agent.plugins.agent_nodes import (
     resume_parser_node,
-    job_matcher_node,
-    skill_analyzer_node,
-    recommendation_node,
     conversation_node,
     decision_node,
+    skill_analyze_node,
+    job_match_node,
+    recommendation_node,
+    finalizer_node,
+    interview_coach_node,
+    job_search_node,
+    resume_optimize_node,
+    salary_analyze_node,
+    manual_review_node,
     router_node,
     error_handler_node,
-    finalizer_node,
-    manual_review_node,
 )
 
 from typing import Any
@@ -28,15 +32,19 @@ def create_workflow() -> Any:
 
     # 加入所有 Nodes
     workflow.add_node("resume_parser", resume_parser_node)
-    workflow.add_node("job_matcher", job_matcher_node)
-    workflow.add_node("skill_analyzer", skill_analyzer_node)
+    workflow.add_node("job_matcher", job_match_node)
+    workflow.add_node("skill_analyzer", skill_analyze_node)
     workflow.add_node("recommendation", recommendation_node)
+    workflow.add_node("finalizer", finalizer_node)
+    workflow.add_node("interview_coach", interview_coach_node)
+    workflow.add_node("job_search", job_search_node)
+    workflow.add_node("resume_optimizer", resume_optimize_node)
+    workflow.add_node("salary_analyzer", salary_analyze_node)
     workflow.add_node("conversation", conversation_node)
     workflow.add_node("decision", decision_node)
+    workflow.add_node("manual_review", manual_review_node)
     workflow.add_node("router", router_node)
     workflow.add_node("error_handler", error_handler_node)
-    workflow.add_node("manual_review", manual_review_node)
-    workflow.add_node("finalizer", finalizer_node)
 
     # 固定 Edges
     workflow.add_edge("conversation", "decision")
