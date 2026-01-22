@@ -4,6 +4,18 @@
 
 Job Search Agent 是一個基於 LangGraph 的多智能體（Multi-Agent）協作平台，專為履歷解析、職缺推薦與職涯輔導等場景設計。專案結合多個專業 Agent，透過可視化流程圖與 API 整合，實現自動化履歷處理、技能分析、職缺匹配與推薦等功能。
 
+---
+
+## 2026/01 架構重大調整
+
+- **Plugin-based Agent Workflow**：核心流程全面遷移為 plugin 架構，所有智能體節點統一由 `src/agent/plugins/agent_nodes.py` 調度，易於擴充與維護。
+- **Service Layer 拆分**：每個 Agent 對應獨立 Service，職責單一、可測試性提升（如 `src/agent/services/skill_service.py`）。
+- **decision_result 輸出統一**：所有流程結果的決策分數與建議，統一輸出於 `result["decision_result"]`，便於前後端與測試驗收。
+- **測試與 CI 強化**：`tests/graph/test_workflow.py` 等測試已對應新版資料結構，驗收標準明確。
+- **.gitignore 完善**：敏感、暫存、mock、資料、環境檔案等已預設排除。
+
+---
+
 ## 開發應用場景
 
 - **履歷解析與結構化**：自動解析 PDF 履歷，提取結構化資訊（基本資料、技能、經歷等）。
@@ -25,6 +37,8 @@ Job Search Agent 是一個基於 LangGraph 的多智能體（Multi-Agent）協�
 +-------------------+      +-------------------+      +-------------------+
 ```
 
+- **Plugin Node 調度**：所有流程節點統一由 `src/agent/plugins/agent_nodes.py` 管理，支援自定義與熱插拔。
+- **Service Layer**：如 `src/agent/services/`，每個業務邏輯獨立，便於單元測試與維護。
 - **StateGraph（LangGraph）**：負責定義 Agent 節點、流程邏輯與狀態傳遞。
 - **API 層**：FastAPI 提供 /graph/visualize 等端點，支援流程查詢與前端渲染。
 - **前端 demo**：ui/graph_demo.html + mermaid.js，動態渲染 workflow 流程圖。
@@ -58,6 +72,8 @@ Job Search Agent 是一個基於 LangGraph 的多智能體（Multi-Agent）協�
 ## 特色
 
 - 多 Agent 協作與可擴充性
+- Plugin/service 架構，維護與擴展容易
+- decision_result 輸出統一，驗收與串接更方便
 - 流程圖可視化，易於理解與維護
 - 完整 API/前端/測試整合
 - 支援自定義 workflow 與多場景應用
